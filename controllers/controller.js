@@ -67,17 +67,26 @@ router.get('/scrape', function(req, res) {
       // Ensure there are no empty content
       if (result.title !== "" && result.summary !== "") {
 
-        // Create a new entry for Article model
-        var entry = new Article(result);
+        // Only add the entry to the database if not already there
+        Article.count({
+          title: result.title
+        }, function(err, test) {
 
-        // Save the entry to DB
-        entry.save(function(err, res) {
-          // log errors if any
-          if (err) {
-            console.log(err);
-          }
-          else {
-            console.log(res);
+          // If entry is unique then save
+          if (test == 0) {
+
+            // Create a new entry for Article model
+            var entry = new Article(result);
+
+            // Save the entry to DB
+            entry.save(function(err, res) {
+              // log errors if any
+              if (err) {
+                console.log(err);
+              } else {
+                console.log(res);
+              }
+            });
           }
         });
       }
@@ -116,8 +125,7 @@ router.post('/add/comment/:id', function(req, res) {
     // log any errors if any
     if (err) {
       console.log(err);
-    }
-    else {
+    } else {
       // Push the new Comment to the list of comments in the article
       Article.findOneAndUpdate({
           '_id': articleId
