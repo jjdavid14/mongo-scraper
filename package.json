@@ -1,0 +1,29 @@
+{
+  "name": "mongo-scraper",
+  "version": "1.0.0",
+  "description": "A Node.js &amp; MongoDB webapp that web-scrapes sports news data and allows users to comment on it.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjdavid14/mongo-scraper.git"
+  },
+  "author": "jjdavid14",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjdavid14/mongo-scraper/issues"
+  },
+  "homepage": "https://github.com/jjdavid14/mongo-scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "moment": "^2.17.1",
+    "mongoose": "^4.7.1",
+    "morgan": "^1.7.0",
+    "request": "^2.79.0"
+  }
+}
